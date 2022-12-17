@@ -16,16 +16,16 @@ int main() {
     sort(maxtuit, maxtuit+n);
     mx = maxtuit[n-1];
     mn = maxtuit[0];
-    for (i=mn;i<mx;i++) {
+    for (i=0;i<n;i++) {
         ct=0;
         for (j=0;j<n;j++) {
-            if (i<=maxtuit[j]) {
-                ct+=i;
+            if (maxtuit[i]<=maxtuit[j]) {
+                ct+=maxtuit[i];
             }
         }
         if (ct>mxct) {
             mxct = ct;
-            mxcst = i;
+            mxcst = maxtuit[i];
         }
     }
     cout << mxct << " " << mxcst;
