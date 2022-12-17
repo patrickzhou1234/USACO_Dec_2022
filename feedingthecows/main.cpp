@@ -4,42 +4,46 @@
 
 using namespace std;
 
-struct cse {
-    int n, k;
-    vector<char> cows;
-};
-
 #define MAX_INT 2147483647
 
 int main() {
-    int t, i, j, n, k;
-    char tmpcow;
+    int t, i, j, n, k, m, gct, hct;
     cin >> t;
-    cse mat[t];
+    vector<char> mat;
+    char inp;
     for (i=0;i<t;i++) {
-        cin >> mat[i].n >> mat[i].k;
-        for (j=0;j<mat[i].n;j++) {
-            cin >> tmpcow;
-            mat[i].cows.push_back(tmpcow);
-        }
-    }
-    string outputstr;
-    for (i=0;i<t;i++) {
-        k=mat[i].k;
-        n=mat[i].n;
+        cin >> n >> k;
         for (j=0;j<n;j++) {
+            cin >> inp;
+            mat.push_back(inp);
+        }
+        for (j=0;j<n;j++) {
+            gct=1;
+            hct=1;
             if (k!=0) {
-                if (j+k<n && (mat[i].cows[j]==mat[i].cows[j+k] || mat[i].cows[j+k]=='.')) {
-                    mat[i].cows[j+k]='.';
-                    mat[i].cows[j]=mat[i].cows[j];
+                for (m=1;m<=k;m++) {
+                    if (j+m<n) {
+                        if (mat[j+m]=='G') {
+                            gct++;
+                        }
+                        if (mat[j+m]=='H') {
+                            hct++;
+                        }
+                    }
+                    if (j-m>=0) {
+                        if (mat[j-m]=='G') {
+                            gct++;
+                        }
+                        if (mat[j-m]=='H') {
+                            hct++;
+                        }
+                    }
                 }
             }
+            cout << gct << " " << hct << endl;
         }
-        for (j=0;j<n;j++) {
-            cout << mat[i].cows[j];
-        }
-        cout << endl;
     }
+    
     system("pause");
     return 0;
 }
