@@ -18,10 +18,8 @@ int main() {
     mn = maxtuit[0];
     for (i=0;i<n;i++) {
         ct=0;
-        for (j=0;j<n;j++) {
-            if (maxtuit[i]<=maxtuit[j]) {
-                ct+=maxtuit[i];
-            }
+        for (j=n-1;j>=i;j--) {
+            ct+=maxtuit[i];
         }
         if (ct>mxct) {
             mxct = ct;
