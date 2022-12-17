@@ -7,9 +7,9 @@ using namespace std;
 #define MAX_INT 2147483647
 
 int main() {
-    int n, i, j, mx, mn, ct, mxct=-1, mxcst;
+    long n, i, j, mx, mn, ct, mxct=-1, mxcst;
     cin >> n;
-    int maxtuit[n];
+    long maxtuit[n];
     for (i=0;i<n;i++) {
         cin >> maxtuit[i];
     }
